@@ -4,6 +4,7 @@
     <title>Student Inventory Form</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="<?php echo base_url('public/assets/student_inventory_form.css'); ?>">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
 </head> 
 <body>
     <?php if (!empty($message)) : ?>
@@ -17,7 +18,7 @@
         in making choices and decisions. All information which you provide about
         yourself will <br> be treated with utmost confindentiality.
       </p>
-
+ 
        <div class="profile-card">
         <div class="profile-image">
           <img src="../../public/assets/UserIcon.svg" alt="Profile Image"">
@@ -556,7 +557,7 @@
               </div>
               <div class="right-buttons">
                   <button class="btn-icon">Clear Form</button>
-                  <button class="btn-icon"><i class="fas fa-download"></i>Download</button>
+                  <button type="button" id="downloadPdfBtn" class="btn-icon"><i class="fas fa-download"></i>Download</button>
                   <button class="btn-icon"><i class="fas fa-share-alt"></i>Share</button>
               </div>
           </div>
@@ -741,5 +742,34 @@ schoolingRadios.forEach(radio => {
     }
   });
 });
+
+document.getElementById('downloadPdfBtn').addEventListener('click', function () {
+  fetch('pdf_form.php')
+    .then(response => response.text())
+    .then(html => {
+      const { jsPDF } = window.jspdf;
+      const doc = new jsPDF();
+
+      let y = 10;
+      doc.setFontSize(14);
+      doc.text("Student Inventory Form", 10, y);
+      y += 10;
+
+      // Strip HTML tags and split into lines
+      const text = html.replace(/<[^>]+>/g, '');
+      const lines = doc.splitTextToSize(text, 180);
+      lines.forEach(line => {
+        doc.text(line, 10, y);
+        y += 7;
+        if (y > 280) {
+          doc.addPage();
+          y = 10;
+        }
+      });
+
+      doc.save("student_inventory_form.pdf");
+    });
+});
+
 
 </script>
