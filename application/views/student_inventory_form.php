@@ -31,7 +31,7 @@
 
       <div class="section">I. Personal Information</div>
       <div class="horizontal-line"></div>
-      <h4>Basic Information</h4><br>
+      <h4>Basic Information</h4><br> 
 
         
         <div class="label-name">
@@ -39,12 +39,98 @@
           <label for="weight">Weight(kg)</label>
         </div>
         <div class="height-weight">
-          <input type="number" name="height" required>   
-          <input type="number" name="weight" required>
+          <input type="number" name="height" required value="<?= $studentProfile["HEIGHT"]; ?>"/>   
+          <input type="number" name="weight" required value="<?= $studentProfile["WEIGHT"]; ?>">
         </div>
+
+        <label>Tribe</label>
+        <select name="tribe" id="tribeDropdown" required>
+            <option value="<?= $studentProfile['TRIBE']; ?>" selected>
+                <?= $studentProfile['TRIBE']; ?>
+            </option>
+
+            <!-- Luzon -->
+            <optgroup label="Luzon">
+                <option value="Tagalog">Tagalog</option>
+                <option value="Ilocano">Ilocano</option>
+                <option value="Kapampangan">Kapampangan</option>
+                <option value="Pangasinense">Pangasinense</option>
+                <option value="Bicolano">Bicolano</option>
+                <option value="Ivatan">Ivatan</option>
+                <option value="Igorot (Ifugao)">Igorot (Ifugao)</option>
+                <option value="Igorot (Kankanaey)">Igorot (Kankanaey)</option>
+                <option value="Igorot (Bontok)">Igorot (Bontok)</option>
+                <option value="Igorot (Ibaloi)">Igorot (Ibaloi)</option>
+                <option value="Igorot (Kalinga)">Igorot (Kalinga)</option>
+                <option value="Igorot (Gaddang)">Igorot (Gaddang)</option>
+                <option value="Igorot (Itawes)">Igorot (Itawes)</option>
+                <option value="Mangyan">Mangyan</option>
+                <option value="Aeta/Agta">Aeta/Agta</option>
+            </optgroup>
+
+            <!-- Visayas -->
+            <optgroup label="Visayas">
+                <option value="Cebuano/Bisaya">Cebuano/Bisaya</option>
+                <option value="Boholano">Boholano</option>
+                <option value="Hiligaynon/Ilonggo">Hiligaynon/Ilonggo</option>
+                <option value="Waray">Waray</option>
+                <option value="Aklanon">Aklanon</option>
+                <option value="Surigaonon">Surigaonon</option>
+                <option value="Butuanon">Butuanon</option>
+                <option value="Siquijodnon">Siquijodnon</option>
+                <option value="Ati">Ati</option>
+            </optgroup>
+
+            <!-- Mindanao - Lumad -->
+            <optgroup label="Mindanao – Lumad Tribes">
+                <option value="Manobo (Agusanon)">Manobo (Agusanon)</option>
+                <option value="Manobo (Tagakaulo)">Manobo (Tagakaulo)</option>
+                <option value="Manobo (Talaandig)">Manobo (Talaandig)</option>
+                <option value="Mandaya">Mandaya</option>
+                <option value="Mansaka">Mansaka</option>
+                <option value="Bagobo">Bagobo</option>
+                <option value="Banwaon">Banwaon</option>
+                <option value="Higaonon">Higaonon</option>
+                <option value="Subanen">Subanen</option>
+                <option value="B’laan">B’laan</option>
+                <option value="T’boli">T’boli</option>
+                <option value="Mamanwa">Mamanwa</option>
+            </optgroup>
+
+            <!-- Mindanao - Moro -->
+            <optgroup label="Mindanao – Moro Tribes">
+                <option value="Maranao">Maranao</option>
+                <option value="Maguindanao">Maguindanao</option>
+                <option value="Tausug">Tausug</option>
+                <option value="Sama-Bajau">Sama-Bajau</option>
+                <option value="Yakan">Yakan</option>
+                <option value="Kalagan">Kalagan</option>
+                <option value="Iranun">Iranun</option>
+                <option value="Jama Mapun">Jama Mapun</option>
+            </optgroup>
+
+            <!-- Other Distinct Groups -->
+            <optgroup label="Other Distinct Groups">
+                <option value="Agutaynen">Agutaynen</option>
+                <option value="Cuyunon">Cuyunon</option>
+                <option value="Palaw’an">Palaw’an</option>
+                <option value="Batak">Batak</option>
+            </optgroup>
+
+            <!-- Others -->
+            <optgroup label="Others">
+                <option value="Others">Others (please specify)</option>
+            </optgroup>
+        </select>
+
+        <div id="otherTribeDiv" style="display:none; margin-top:10px;">
+            <label>Please specify your tribe:</label>
+            <input type="text" name="othertribe" id="otherTribeInput" placeholder="Enter your tribe" value="<?= $studentProfile["OTHERTRIBE"]; ?>"/>
+        </div>
+
         
         <label>Present Address</label>
-        <input type="text" name="present_address" required>
+        <input type="text" name="presentaddress" required value="<?= $studentProfile["PRESENTADDRESS"]; ?>"/>
         <h4>In case of emergency</h4>
 
         <div class="label-name">
@@ -52,8 +138,8 @@
           <label for="weight">Address</label>
         </div>
         <div class="height-weight">
-          <input type="text" name="contact_person" required>   
-          <input type="text" name="contact_person_address" required>
+          <input type="text" name="contactperson" required value="<?= $studentProfile["CONTACTPERSON"]; ?>"/>   
+          <input type="text" name="contactpersonaddress" required value="<?= $studentProfile["CONTACTPERSONADDRESS"]; ?>"/>
         </div>
 
         <div class="label-name">
@@ -61,69 +147,70 @@
           <label for="weight">Relationship</label>
         </div>
         <div class="height-weight">
-          <input type="number" name="contact_number" required>
-          <input type="text" name="relationship" required>
+          <input type="number" name="contactnumber" required value="<?= $studentProfile["CONTACTNUMBER"]; ?>"/>
+          <input type="text" name="relationship" required value="<?= $studentProfile["RELATIONSHIP"]; ?>"/>
         </div>
         <h4>Employment Status</h4>
         <label>Are you currently working?</label>
         <div class="radio-selection">
-          <input type="radio" name="is_currently_working" value="Yes" required> Yes
-          <input type="radio" name="is_currently_working" value="No" required> No<br><br>
+          <input type="radio" name="iscurrentlyworking" value="Yes" required <?php echo $studentProfile["ISCURRENTLYWORKING"] == "Yes" ? "checked" : ""; ?> /> Yes
+          <input type="radio" name="iscurrentlyworking" value="No" required <?php echo $studentProfile["ISCURRENTLYWORKING"] == "No" ? "checked" : ""; ?> /> No<br><br>
         </div>
          <div class="section">II. Educational Background</div>
         <div class="horizontal-line"></div>
         <h4>Elementary</h4><br>
         
         <label>School Name</label>
-        <input type="text" name="elementary_school_name"><br><br>
+        <input type="text" name="elementaryschoolname" required value="<?= $studentProfile["ELEMENTARYSCHOOLNAME"]; ?>"/><br><br>
 
         <label>School Address</label>
-        <input type="text" name="elementary_address"><br><br>
+        <input type="text" name="elementaryaddress" value="<?= $studentProfile["ELEMENTARYADDRESS"]; ?>"/><br><br>
         <div class="label-name">
         <label>Year Graduated</label>
         <label class="school-type">School Type</label>
         </div>
         <div class="height-weight">
-          <select name="elem_year_graduated" required>
+          <select name="elemyeargraduated" required>
           <option value="" disabled selected>Select Year</option>
             <?php
               $currentYear = date('Y');
               for ($year = $currentYear; $year >= 1980; $year--) {
-                echo "<option value=\"$year\">$year</option>";
+                echo "<option value=\"$year\" ". ($studentProfile["ELEMYEARGRADUATED"] == $year ? "selected" : "") .">$year</option>";
               }
             ?>
           </select>
-          <div class="radio-selection">
-            <input type="radio" name="elementary_school_type" value="Public" required> Public
-            <input type="radio" name="elementary_school_type" value="Private" required> Private
-          </div>
+         <div class="radio-selection">
+            <input type="radio" name="elementaryschooltype" value="Public" required <?php echo $studentProfile["ELEMENTARYSCHOOLTYPE"] == "Public" ? "checked" : ""; ?> /> Public
+            <input type="radio" name="elementaryschooltype" value="Private" required <?php echo $studentProfile["ELEMENTARYSCHOOLTYPE"] == "Private" ? "checked" : ""; ?> /> Private
+         </div>
+
         <br><br>
         </div>
 
         <h4>Junior High School</h4><br>
         
         <label>School Name</label>
-        <input type="text" name="junior_high_school_name"><br><br>
+        <input type="text" name="juniorhighschoolname" required value="<?= $studentProfile["JUNIORHIGHSCHOOLNAME"]; ?>"/><br><br>
 
         <label>School Address</label>
-        <input type="text" name="junior_high_address"><br><br>
+        <input type="text" name="juniorhighaddress" required value="<?= $studentProfile["JUNIORHIGHADDRESS"]; ?>"/><br><br>
         <div class="label-name">
         <label>Year Graduated</label>
         <label class="school-type">School Type</label>
         </div>
         <div class="height-weight">
-          <select name="junior_year_graduated" required>
+          <select name="junioryeargraduated" required>
           <option value="" disabled selected>Select Year</option>
             <?php
               $currentYear = date('Y');
               for ($year = $currentYear; $year >= 1980; $year--) {
-                echo "<option value=\"$year\">$year</option>";
+                echo "<option value=\"$year\" ". ($studentProfile["JUNIORYEARGRADUATED"] == $year ? "selected" : "") .">$year</option>";
               }
             ?>
           </select>
           <div class="radio-selection">
-            <input type="radio" name="junior_high_school_type" value="Public" required> Public
-            <input type="radio" name="junior_high_school_type" value="Private" required> Private
+            <input type="radio" name="juniorhighschooltype" value="Public" required <?php echo $studentProfile["JUNIORHIGHSCHOOLTYPE"] == "Public" ? "checked" : ""; ?> /> Public
+            <input type="radio" name="juniorhighschooltype" value="Private" required <?php echo $studentProfile["JUNIORHIGHSCHOOLTYPE"] == "Private" ? "checked" : ""; ?> /> Private
           </div>
         <br><br>
         </div>
@@ -131,55 +218,55 @@
         <h4>Vocational</h4><br>
         
         <label>School Name</label>
-        <input type="text" name="vocational_course_name"><br><br>
+        <input type="text" name="vocationalcoursename" required value="<?= $studentProfile["VOCATIONALCOURSENAME"]; ?>"/><br><br>
 
         <label>School Address</label>
-        <input type="text" name="vocational_address"><br><br>
+        <input type="text" name="vocationaladdress" required value="<?= $studentProfile["VOCATIONALADDRESS"]; ?>"/><br><br>
         <div class="label-name">
         <label>Year Graduated</label>
         <label class="school-type">School Type</label>
         </div>
         <div class="height-weight">
-          <select name="vocational_year_graduated" required>
+          <select name="vocationalyeargraduated" required>
           <option value="" disabled selected>Select Year</option>
             <?php
               $currentYear = date('Y');
               for ($year = $currentYear; $year >= 1980; $year--) {
-                echo "<option value=\"$year\">$year</option>";
+                echo "<option value=\"$year\" ". ($studentProfile["VOCATIONALYEARGRADUATED"] == $year ? "selected" : "") .">$year</option>";
               }
             ?>
           </select>
           <div class="radio-selection">
-            <input type="radio" name="vocational_type" value="Public" required> Public
-            <input type="radio" name="vocational_type" value="Private" required> Private
+            <input type="radio" name="vocationaltype" value="Public" required <?php echo $studentProfile["VOCATIONALTYPE"] == "Public" ? "checked" : ""; ?> /> Public
+            <input type="radio" name="vocationaltype" value="Private" required <?php echo $studentProfile["VOCATIONALTYPE"] == "Private" ? "checked" : ""; ?> /> Private
           </div>
         <br><br>
         </div>
 
         <h4>Senior Highschool</h4><br>
         
-        <label>School Name</label>
-        <input type="text" name="senior_high_school_name"><br><br>
+        <label>مرحبا بالعالم</label>
+        <input type="text" name="seniorhighschoolname" required value="<?= $studentProfile["SENIORHIGHSCHOOLTYPE"]; ?>"/><br><br>
 
         <label>School Address</label>
-        <input type="text" name="senior_high_address"><br><br>
+        <input type="text" name="seniorhighaddress" required value="<?= $studentProfile["SENIORHIGHADDRESS"]; ?>"/><br><br>
         <div class="label-name">
         <label>Year Graduated</label>
         <label class="school-type">School Type</label>
         </div>
         <div class="height-weight">
-          <select name="senior_year_graduated" required>
+          <select name="senioryeargraduated" required>
           <option value="" disabled selected>Select Year</option>
             <?php
               $currentYear = date('Y');
               for ($year = $currentYear; $year >= 1980; $year--) {
-                echo "<option value=\"$year\">$year</option>";
+                echo "<option value=\"$year\" ". ($studentProfile["SENIORYEARGRADUATED"] == $year ? "selected" : "") .">$year</option>";
               }
             ?>
           </select>
           <div class="radio-selection">
-            <input type="radio" name="senior_high_school_type" value="Public" required> Public
-            <input type="radio" name="senior_high_school_type" value="Private" required> Private
+            <input type="radio" name="seniorhighschooltype" value="Public" required <?php echo $studentProfile["SENIORHIGHSCHOOLTYPE"] == "Public" ? "checked" : ""; ?> /> Public
+            <input type="radio" name="seniorhighschooltype" value="Private" required <?php echo $studentProfile["SENIORHIGHSCHOOLTYPE"] == "Private" ? "checked" : ""; ?> /> Private
           </div>
         <br><br>
         </div>
@@ -187,41 +274,41 @@
         <h4>College</h4><br>
         
         <label>School Name</label>
-        <input type="text" name="college_school_name"><br><br>
+        <input type="text" name="collegeschoolname" required value="<?= $studentProfile["COLLEGESCHOOLNAME"]; ?>"/><br><br>
 
         <label>School Address</label>
-        <input type="text" name="college_address"><br><br>
+        <input type="text" name="collegeaddress" required value="<?= $studentProfile["COLLEGEADDRESS"]; ?>"/><br><br>
         <div class="label-name">
         <label>Year Graduated</label>
         <label class="school-type">School Type</label>
         </div>
         <div class="height-weight">
-          <select name="college_year_graduated" required>
+          <select name="collegeyeargraduated" required>
           <option value="" disabled selected>Select Year</option>
             <?php
               $currentYear = date('Y');
               for ($year = $currentYear; $year >= 1980; $year--) {
-                echo "<option value=\"$year\">$year</option>";
+                echo "<option value=\"$year\" ". ($studentProfile["COLLEGEYEARGRADUATED"] == $year ? "selected" : "") .">$year</option>";
               }
             ?>
           </select>
           <div class="radio-selection">
-            <input type="radio" name="college_type" value="Public" required> Public
-            <input type="radio" name="college_type" value="Private" required> Private
+            <input type="radio" name="collegetype" value="Public" required <?php echo $studentProfile["COLLEGETYPE"] == "Public" ? "checked" : ""; ?> /> Public
+            <input type="radio" name="collegetype" value="Private" required <?php echo $studentProfile["COLLEGETYPE"] == "Private" ? "checked" : ""; ?> /> Private
           </div>
         <br><br>
         </div>
         <br>      
         <label>Honors Received or Special Awards</label>
-        <input type="text" name="honors_received"><br><br>
+        <input type="text" name="honorsreceived" required value="<?= $studentProfile["HEIGHT"]; ?>"/><br><br>
 
         <label>Nature of Schooling</label>
         <div class="height-weight">
           <div class="radio-selection">
-            <input type="radio" name="nature_of_schooling" value="Continuous" required> Continuous
-            <input type="radio" name="nature_of_schooling" value="Interrupted" required> Interrupted, why?
+            <input type="radio" name="natureofschooling" value="Continuous" required <?php echo $studentProfile["NATUREOFSCHOOLING"] == "Continuous" ? "checked" : ""; ?> /> Continuous
+            <input type="radio" name="natureofschooling" value="Interrupted" required <?php echo $studentProfile["NATUREOFSCHOOLING"] == "Interrupted" ? "checked" : ""; ?> /> Interrupted, why?
           </div>
-          <input class="input-width" type="text" name="reason_for_stopping"><br><br>
+          <input class="input-width" type="text" name="reasonforstopping" value="<?= $studentProfile["REASONFORSTOPPING"]; ?>"/><br><br>
         <br><br>
         </div>
 
@@ -235,8 +322,8 @@
           <label for="weight">Age</label>
         </div>
         <div class="height-weight">
-          <input type="text" name="father_full_name" required>   
-          <input type="number" name="father_age" required>
+          <input type="text" name="fatherfullname" required value="<?= $studentProfile["FATHERFULLNAME"]; ?>"/>   
+          <input type="number" name="fatherage" required required value="<?= $studentProfile["FATHERAGE"]; ?>"/>
         </div>
 
         <div class="deceased-label">
@@ -245,16 +332,16 @@
         </div>
 
         <div class="height-weight">
-          <input class="input-width" type="text" name="father_educational_attainment" required><br><br>
+          <input class="input-width" type="text" name="fathereducationalattainment" required value="<?= $studentProfile["FATHEREDUCATIONALATTAINMENT"]; ?>"/><br><br>
           <div class="radio-selection">
-            <input type="radio" name="father_living_status" value="Living" required> Living
-            <input type="radio" name="father_living_status" value="Deceased" required> Deceased
+            <input type="radio" name="fatherlivingstatus" value="Living" required <?php echo $studentProfile["FATHERLIVINGSTATUS"] == "Living" ? "checked" : ""; ?> /> Living
+            <input type="radio" name="fatherlivingstatus" value="Deceased" required <?php echo $studentProfile["FATHERLIVINGSTATUS"] == "Deceased" ? "checked" : ""; ?> /> Deceased
           </div>
         <br><br>
         </div>
 
         <label>Occupation</label>
-        <input type="text" name="occupation" required><br><br>
+        <input type="text" name="occupation" required value="<?= $studentProfile["OCCUPATION"]; ?>"/><br><br>
 
         <h4>Mothers's Information</h4><br>
 
@@ -263,8 +350,8 @@
           <label for="weight">Age</label>
         </div>
         <div class="height-weight">
-          <input type="text" name="mother_full_name" required>   
-          <input type="number" name="mother_age" required>
+          <input type="text" name="motherfullname" required value="<?= $studentProfile["MOTHERFULLNAME"]; ?>"/>   
+          <input type="number" name="motherage" required value="<?= $studentProfile["MOTHERAGE"]; ?>"/>
         </div>
 
         <div class="deceased-label">
@@ -273,10 +360,10 @@
         </div>
 
         <div class="height-weight">
-          <input class="input-width" type="text" name="mother_educational_attainment" required><br><br>
+          <input class="input-width" type="text" name="mothereducationalattainment" required><br><br>
           <div class="radio-selection">
-            <input type="radio" name="mother_living_status" value="Living" required> Living
-            <input type="radio" name="mother_living_status" value="Deceased" required> Deceased
+            <input type="radio" name="motherlivingstatus" value="Living" required <?php echo $studentProfile["MOTHERLIVINGSTATUS"] == "Living" ? "checked" : ""; ?> /> Living
+            <input type="radio" name="motherlivingstatus" value="Deceased" required <?php echo $studentProfile["MOTHERLIVINGSTATUS"] == "Deceased" ? "checked" : ""; ?> /> Deceased
           </div>
         <br><br>
         </div>
@@ -288,8 +375,8 @@
           <label for="weight">Age</label>
         </div>
         <div class="height-weight">
-          <input type="text" name="guardian_full_name" required>   
-          <input type="number" name="guardian_age" required>
+          <input type="text" name="guardianfullname" required value="<?= $studentProfile["GUARDIANFULLNAME"]; ?>"/>   
+          <input type="number" name="guardianage" required value="<?= $studentProfile["GUARDIANAGE"]; ?>"/>
         </div>
 
         <div class="deceased-label">
@@ -297,8 +384,8 @@
           <label for="weight">Occupation</label>
         </div>
         <div class="height-weight">
-          <input type="text" name="educational_attainment" required>   
-          <input type="text" name="guardian_occupation" required>
+          <input type="text" name="educationalattainment" required value="<?= $studentProfile["EDUCATIONALATTAINMENT"]; ?>"/>   
+          <input type="text" name="guardianoccupation" required value="<?= $studentProfile["GUARDIANOCCUPATION"]; ?>"/>
         </div>
 
         <h4>Family Background</h4><br>
@@ -309,9 +396,9 @@
           <label for="weight">Number of sisters</label>
         </div>
         <div class="height-weight">
-          <input type="number" name="num_of_children" required>   
-          <input type="number" name="num_of_brothers" required>
-          <input type="number" name="num_of_sisters" required>
+          <input type="number" name="numofchildren" required value="<?= $studentProfile["NUMOFCHILDREN"]; ?>"/>   
+          <input type="number" name="numofbrothers" required value="<?= $studentProfile["NUMOFBROTHERS"]; ?>"/>
+          <input type="number" name="numofsisters" required value="<?= $studentProfile["NUMOFSISTERS"]; ?>"/>
         </div>
 
         <label>Parent's Marital Relationship</label><br>
@@ -319,41 +406,41 @@
          <div class="radio-grid">
           <div>
             <label>
-              <input type="radio" name="parents_marital_status" value="Married and staying together" required>
+              <input type="radio" name="parentsmaritalstatus" value="Married and staying together" required <?php echo $studentProfile["PARENTMARITALSTATUS"] == "Married and staying together" ? "checked" : ""; ?> />
               Married and staying together
             </label>
           </div>
           <div>
             <label>
-              <input type="radio" name="parents_marital_status" value="Not married but together" required>
+              <input type="radio" name="parentsmaritalstatus" value="Not married but together" required <?php echo $studentProfile["PARENTMARITALSTATUS"] == "Not married but together" ? "checked" : ""; ?> />
               Not married but staying together
             </label>
           </div>
           <div>
             <label>
-              <input type="radio" name="parents_marital_status" value="Single Parent" required>
+              <input type="radio" name="parentsmaritalstatus" value="Single Parent" required <?php echo $studentProfile["PARENTMARITALSTATUS"] == "Single Parent" ? "checked" : ""; ?> />
               Single Parent
             </label>
           </div>
           <div>
             <label>
-              <input type="radio" name="parents_marital_status" value="Married but separated" required>
+              <input type="radio" name="parentsmaritalstatus" value="Married but separated" required <?php echo $studentProfile["PARENTMARITALSTATUS"] == "Married but separated" ? "checked" : ""; ?> />
               Married but separated
             </label>
           </div>
           <div>
             <label>
-              <input type="radio" name="parents_marital_status" value="other" required id="otherRadio">
+              <input type="radio" name="parentsmaritalstatus" value="other" required id="otherRadio">
               Others, please specify
             </label>
             <div id="otherInputWrapper" style="display: none; margin-top: 8px;">
               <input
                 class="input-padding input-width"
                 type="text"
-                name="other_marital_status_reason"
+                name="othermaritalstatusreason"
                 id="otherInput"
                 placeholder="Please specify"
-              >
+                value="<?= $studentProfile["OTHERMARITALSTATUSREASON"]; ?>" />
             </div>
         </div>
       </div>
@@ -363,21 +450,21 @@
 
          <div class="radio-grid">
             <div>
-             <input type="checkbox" name="financers" value="Parents"> Parents
+             <input type="checkbox" name="financers" value="1" <?php echo $studentProfile["FINANCERS"] == "1" ? "checked" : ""; ?> /> Parents
             </div>
             <div>
-              <input type="checkbox" name="financers" value="Brother and Sister"> Brother/Sister
+              <input type="checkbox" name="financers" value="1" <?php echo $studentProfile["FINANCERS"] == "1" ? "checked" : ""; ?>/> Brother/Sister
             </div> 
             <div>
-              <input type="checkbox" name="financers" value="Spouse"> Spouse
+              <input type="checkbox" name="financers" value="1" <?php echo $studentProfile["FINANCERS"] == "1" ? "checked" : ""; ?>/> Spouse
             </div>  
             <div>
-              <input type="checkbox" name="financers" value="Self Supporting"> Self-supporting/working
+              <input type="checkbox" name="financers" value="1" <?php echo $studentProfile["FINANCERS"] == "1" ? "checked" : ""; ?>/> Self-supporting/working
             </div>  
           </div>
           <div class="check-box">
-              <input type="checkbox" name="otherFinancer" value="others"> Others, please specify
-              <input class="input-width input-padding" type="text" name="other_financer"> 
+              <input type="checkbox" name="otherFinancer"> Others, please specify
+              <input class="input-width input-padding" type="text" name="otherfinancer" value="<?= $studentProfile["OTHERFINANCER"]; ?>"/> 
           </div>
 
           <div class="section">IV. Health Information</div>
@@ -387,49 +474,49 @@
           
           <div class="checkbox-group">
           <label>
-            <input type="checkbox" name="problem_vision" value="1">
+            <input type="checkbox" name="problemvision" value="1" <?php echo $studentProfile["FINANCERS"] == "1" ? "checked" : ""; ?>/>
             Vision (Please specify)
           </label>
           
-          <input type="text" name="vision_specify" class="form-control">
+          <input type="text" name="visionspecify" class="form-control" value="<?= $studentProfile["VISIONSPECIFY"]; ?>"/>
         </div>
 
         <div class="checkbox-group">
           <label>
-            <input type="checkbox" name="problem_speech" value="1">
+            <input type="checkbox" name="problemspeech" value="1" <?php echo $studentProfile["PROBLEMSPEECH"] == "1" ? "checked" : ""; ?>/>
             Speech (Please specify)
           </label>
-          <input type="text" name="speech_specify" class="form-control">
+          <input type="text" name="speechspecify" class="form-control" value="<?= $studentProfile["SPEECHSPECIFY"]; ?>"/>
         </div>
 
         <div class="checkbox-group">
           <label>
-            <input type="checkbox" name="problem_hearing" value="1">
+            <input type="checkbox" name="problemhearing" value="1" <?php echo $studentProfile["PROBLEMHEARING"] == "1" ? "checked" : ""; ?> />
             Hearing (Please specify)
           </label>
-          <input type="text" name="hearing_specify" class="form-control">
+          <input type="text" name="hearingspecify" class="form-control" value="<?= $studentProfile["HEARINGSPECIFY"]; ?>"/>
         </div>
 
         <div class="checkbox-group">
           <label>
-            <input type="checkbox" name="problem_health" value="1">
+            <input type="checkbox" name="problemhealth" value="1" <?php echo $studentProfile["PROBLEMHEALTH"] == "1" ? "checked" : ""; ?> />
             General Health (Please specify)
           </label>
-          <input type="text" name="health_specify" class="form-control">
+          <input type="text" name="healthspecify" class="form-control" value="<?= $studentProfile["HEALTHSPECIFY"]; ?>"/>
         </div>
 
         <div class="checkbox-group">
           <label>
-            <input type="checkbox" name="problem_disability" value="1">
+            <input type="checkbox" name="problemdisability" value="1" <?php echo $studentProfile["PROBLEMDISABILITY"] == "1" ? "checked" : ""; ?>/>
             Physical Disability (Please specify)
           </label>
-          <input type="text" name="disability_specify" class="form-control">
+          <input type="text" name="disabilityspecify" class="form-control" value="<?= $studentProfile["DISABILITYSPECIFY"]; ?>"/>
         </div>
 
         <legend>2. Have you been diagnosed with certain illnesses before?</legend>
         <div class="radio-selection">
-          <input type="radio" name="diagnosed_before" value="Yes" required> Yes
-          <input type="radio" name="diagnosed_before" value="No" required> No<br><br>
+          <input type="radio" name="diagnosedbefore" value="Yes" required <?php echo $studentProfile["DIAGNOSEDBEFORE"] == "Yes" ? "checked" : ""; ?> /> Yes
+          <input type="radio" name="diagnosedbefore" value="No" required <?php echo $studentProfile["DIAGNOSEDBEFORE"] == "No" ? "checked" : ""; ?> /> No<br><br>
         </div>
 
         <h4>Illness Record</h4><br>
@@ -439,8 +526,8 @@
           <label for="weight">Date Diagnosed</label>
         </div>
         <div class="height-weight">
-          <input type="text" name="illness" required>   
-          <input type="date" name="date_diagnosed" required>
+          <input type="text" name="illness" required value="<?= $studentProfile["ILLNESS"]; ?>"/>   
+          <input type="date" name="datediagnosed" required value="<?= $studentProfile["DATEDIAGNOSED"]; ?>"/>
         </div>
 
         <div class="label-name">
@@ -448,8 +535,8 @@
           <label for="weight">Date Diagnosed</label>
         </div>
         <div class="height-weight">
-          <input type="text" name="illness1" required>
-          <input type="date" name="date_diagnosed1" required>
+          <input type="text" name="illness1" required value="<?= $studentProfile["ILLNESS1"]; ?>"/>
+          <input type="date" name="datediagnosed1" required value="<?= $studentProfile["DATEDIAGNOSED1"]; ?>"/>
         </div>
 
         <div class="label-name">
@@ -457,8 +544,8 @@
           <label for="weight">Date Diagnosed</label>
         </div>
         <div class="height-weight">
-          <input type="text" name="illness2" required>
-          <input type="date" name="date_diagnosed2" required>
+          <input type="text" name="illness2" required value="<?= $studentProfile["ILLNESS2"]; ?>"/>
+          <input type="date" name="datediagnosed2" required value="<?= $studentProfile["DATEDDIAGNOSED2"]; ?>"/>
         </div>
 
         <div class="section">V. Other Information</div>
@@ -468,37 +555,37 @@
 
         <div class="radio-grid">
             <div>
-             <input type="checkbox" name="sports" value="1"> Sports
+             <input type="checkbox" name="sports" value="1" <?php echo $studentProfile["SPORTS"] == "1" ? "checked" : ""; ?> /> Sports
             </div>
             <div>
-              <input type="checkbox" name="science" value="1"> Science
+              <input type="checkbox" name="science" value="1" <?php echo $studentProfile["SCIENCE"] == "1" ? "checked" : ""; ?> /> Science
             </div> 
             <div>
-              <input type="checkbox" name="arts" value="1"> Arts
+              <input type="checkbox" name="arts" value="1" <?php echo $studentProfile["ARTS"] == "1" ? "checked" : ""; ?> /> Arts
             </div>  
             <div>
-              <input type="checkbox" name="social_studies" value="1"> Social Studies
+              <input type="checkbox" name="socialstudies" value="1" <?php echo $studentProfile["SOCIALSTUDIES"] == "1" ? "checked" : ""; ?> /> Social Studies
             </div>  
              <div>
-              <input type="checkbox" name="religious" value="1"> Religious
+              <input type="checkbox" name="religious" value="1" <?php echo $studentProfile["RELIGIOUS"] == "1" ? "checked" : ""; ?>/> Religious
             </div>
             <div>
-              <input type="checkbox" name="civic_awareness" value="1"> Civic Awareness/Services
+              <input type="checkbox" name="civicawareness" value="1" <?php echo $studentProfile["CIVICAWARENESS"] == "1" ? "checked" : ""; ?>/> Civic Awareness/Services
             </div> 
             <div>
-              <input type="checkbox" name="others_interests" value="others_interests"> Others
+              <input type="checkbox" name="othersinterests" value="1" <?php echo $studentProfile["OTHERSINTERESTS"] == "1" ? "checked" : ""; ?>/> Others
             </div> 
           </div><br>
 
           <label>2. Have you consulted/been sent to see the Guidance Counselor before?</label>
 
            <div class="radio-selection">
-            <input type="radio" name="consulted_status" value="Yes" required> Yes
-            <input type="radio" name="consulted_status" value="No" required> No<br><br>
+            <input type="radio" name="consultedstatus" value="Yes" required <?php echo $studentProfile["CONSULTEDSTATUS"] == "Yes" ? "checked" : ""; ?> /> Yes
+            <input type="radio" name="consultedstatus" value="No" required <?php echo $studentProfile["CONSULTEDSTATUS"] == "No" ? "checked" : ""; ?> /> No<br><br>
           </div>
 
           <label>If yes, what was/were the reason(s)?</label>
-          <input type="text" name="reason_for_consultation" required>
+          <input type="text" name="reasonforconsultation" required value="<?= $studentProfile["HEIGHT"]; ?>" />
 
           <div class="info-box">
             <i class="fa-solid fa-circle-info"></i>
@@ -511,33 +598,33 @@
 
            <div class="radio-grid">
             <div>
-             <input type="checkbox" name="family_matters" value="1"> Family Matters
+             <input type="checkbox" name="familymatters" value="1" <?php echo $studentProfile["FAMILYMATTERS"] == "1" ? "checked" : ""; ?>/> Family Matters
             </div>
             <div>
-              <input type="checkbox" name="career_concerns" value="1"> Career Concerns
+              <input type="checkbox" name="careerconcerns" value="1" <?php echo $studentProfile["CAREERCONCERNS"] == "1" ? "checked" : ""; ?>/> Career Concerns
             </div> 
             <div>
-              <input type="checkbox" name="relationship_concerns" value="1"> Relationship Concerns
+              <input type="checkbox" name="relationshipconcerns" value="1" <?php echo $studentProfile["RELATIONSHIPCONCERNS"] == "1" ? "checked" : ""; ?>/> Relationship Concerns
             </div>
             <div>
-              <input type="checkbox" name="self_concerns" value="1"> Self
+              <input type="checkbox" name="selfconcerns" value="1" <?php echo $studentProfile["SELFCONCERNS"] == "1" ? "checked" : ""; ?>/> Self
             </div>  
             <div>
-              <input type="checkbox" name="concerns_with_teachers" value="1"> Concern with Teachers
+              <input type="checkbox" name="concernswithteachers" value="1" <?php echo $studentProfile["CONCERNWITHTEACHERS"] == "1" ? "checked" : ""; ?>/> Concern with Teachers
             </div>
             <div>
-              <input type="checkbox" name="financial_matters" value="1"> Financial Matters
+              <input type="checkbox" name="financialmatters" value="1" <?php echo $studentProfile["FINANCIALMATTERS"] == "1" ? "checked" : ""; ?>/> Financial Matters
             </div>
             <div>
-              <input type="checkbox" name="academic_concerns" value="1"> Academic Concerns
+              <input type="checkbox" name="academicconcerns" value="1" <?php echo $studentProfile["ACADEMICCONCERNS"] == "1" ? "checked" : ""; ?>/> Academic Concerns
             </div> 
             <div>
-              <input type="checkbox" name="health_concerns" value="1"> Health Concerns
+              <input type="checkbox" name="healthconcerns" value="1" <?php echo $studentProfile["HEALTHCONCERNS"] == "1" ? "checked" : ""; ?>/> Health Concerns
             </div>   
           </div> 
           <div class="check-box">
               <input type="checkbox" name="others[]" value="others"> Others, please specify
-              <input class="input-width input-padding" type="text" name="other_guidance_concern" required> 
+              <input class="input-width input-padding" type="text" name="otherguidanceconcern" required value="<?= $studentProfile["OTHERGUIDANCECONCERN"]; ?>"/>> 
           </div><br>
           
           <div class="privacy-notice">
@@ -571,25 +658,25 @@ const dbName = "StudentInventoryDB";
 const storeName = "forms";
 let db;
 
-const radios = document.getElementsByName('parents_marital_status');
+const radios = document.getElementsByName('parentsmaritalstatus');
 const otherInputWrapper = document.getElementById('otherInputWrapper');
 const otherInput = document.getElementById('otherInput');
 const othersCheckbox = document.querySelector('input[type="checkbox"][name="others[]"][value="others"]');
 const othersFinancerCheckbox = document.querySelector('input[type="checkbox"][name="otherFinancer"][value="others"]');
-const otherGuidanceInput = document.querySelector('input[name="other_guidance_concern"]');
-const otherFinancerInput = document.querySelector('input[name="other_financer"]');
-const diagnosedRadios = document.getElementsByName('diagnosed_before');
+const otherGuidanceInput = document.querySelector('input[name="otherguidanceconcern"]');
+const otherFinancerInput = document.querySelector('input[name="otherfinancer"]');
+const diagnosedRadios = document.getElementsByName('diagnosedbefore');
 const privacyCheckbox = document.querySelector('input[name="privacyCheck"]');
 const submitBtn = document.querySelector('button[type="submit"]');
-const schoolingRadios = document.getElementsByName('nature_of_schooling');
-const reasonInput = document.querySelector('input[name="reason_for_stopping"]');
+const schoolingRadios = document.getElementsByName('natureofschooling');
+const reasonInput = document.querySelector('input[name="reasonforstopping"]');
 const illnessInputs = [
   document.querySelector('input[name="illness"]'),
-  document.querySelector('input[name="date_diagnosed"]'),
+  document.querySelector('input[name="datediagnosed"]'),
   document.querySelector('input[name="illness1"]'),
-  document.querySelector('input[name="date_diagnosed1"]'),
+  document.querySelector('input[name="datediagnosed1"]'),
   document.querySelector('input[name="illness2"]'),
-  document.querySelector('input[name="date_diagnosed2"]')
+  document.querySelector('input[name="datediagnosed2"]')
 ];
 
 function openDB() {
@@ -769,6 +856,21 @@ document.getElementById('downloadPdfBtn').addEventListener('click', function () 
 
       doc.save("student_inventory_form.pdf");
     });
+});
+
+const tribeDropdown = document.getElementById('tribeDropdown');
+  const otherTribeDiv = document.getElementById('otherTribeDiv');
+  const otherTribeInput = document.getElementById('otherTribeInput');
+
+  tribeDropdown.addEventListener('change', function () {
+        if (this.value === 'Others') {
+            otherTribeDiv.style.display = 'block';
+            otherTribeInput.setAttribute('required', 'required');
+        } else {
+            otherTribeDiv.style.display = 'none';
+            otherTribeInput.removeAttribute('required');
+            otherTribeInput.value = '';
+        }
 });
 
 
