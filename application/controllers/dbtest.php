@@ -11,6 +11,36 @@ class Dbtest extends CI_Controller {
     }
 
     public function form() {
+        $fields = [
+            'height', 'weight', 'presentaddress', 'contactperson', 'contactpersonaddress',
+            'contactnumber', 'relationship', 'iscurrentlyworking', 'elementaryschoolname',
+            'elementaryaddress', 'elemyeargraduated', 'elementaryschooltype',
+            'juniorhighschoolname', 'juniorhighaddress', 'junioryeargraduated',
+            'juniorhighschooltype', 'vocationalcoursename', 'vocationaladdress',
+            'vocationalyeargraduated', 'vocationaltype', 'seniorhighschoolname',
+            'seniorhighaddress', 'senioryeargraduated', 'seniorhighschooltype',
+            'collegeschoolname', 'collegeaddress', 'collegeyeargraduated', 'collegetype',
+            'honorsreceived', 'natureofschooling', 'reasonforstopping',
+            'fatherfullname', 'fatherage', 'fathereducationalattainment',
+            'fatherlivingstatus', 'occupation', 'motherfullname', 'motherage',
+            'mothereducationalattainment', 'motherlivingstatus', 'guardianfullname',
+            'guardianage', 'educationalattainment', 'guardianoccupation', 'numofchildren',
+            'numofbrothers', 'numofsisters', 'parentsmaritalstatus', 'othermaritalstatusreason',
+            'financers', 'otherfinancer', 'problemvision', 'visionspecify',
+            'problemspeech', 'speechspecify', 'problemhearing', 'hearingspecify',
+            'problemhealth', 'healthspecify', 'problemdisability', 'disabilityspecify',
+            'diagnosedbefore', 'illness', 'datediagnosed', 'illness1', 'datediagnosed1',
+            'illness2', 'datediagnosed2', 'sports', 'science', 'arts', 'socialstudies',
+            'religious', 'civicawareness', 'othersinterests', 'consultedstatus',
+            'reasonforconsultation', 'familymatters', 'careerconcerns', 'relationshipconcerns',
+            'selfconcerns', 'concernswithteachers', 'financialmatters', 'academicconcerns',
+            'healthconcerns', 'otherguidanceconcern', 'tribe', 'othertribe', 'parentmaritalstatus', 'dateddiagnosed2', 'concernwithteachers', 'test1', 'date1', 'rank1', 'score1', 'test2', 'date2', 'rank2', 'score2', 'test3', 'date3', 'rank3', 'score3', 'civilstatus'
+        ];
+        $data["studentProfile"] = [];
+        foreach($fields as $key) {
+            $k = strtoupper($key);
+            $data["studentProfile"][$k] = "";
+        }
         $data['message'] = $this->session->flashdata('message');
         $this->load->view('student_inventory_form', $data);
     }
