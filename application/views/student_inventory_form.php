@@ -358,22 +358,39 @@ if ($Rpic && $Rpic->PICTURE) {
       </div>
       <div class="pu-height-weight">
         <input type="text" name="fatherfullname" required value="<?= $studentProfile["FATHERFULLNAME"]; ?>"/>   
-        <input type="number" name="fatherage" required required value="<?= $studentProfile["FATHERAGE"]; ?>"/>
+        <input type="number" name="fatherage" required  value="<?= $studentProfile["FATHERAGE"]; ?>"/>
       </div>
 
-      <div class="pu-deceased-label">
+      <div class="pu-label-name">
         <label>Educational Attainment<span class="required">*</span></label>
         <label class="pu-deceased-label">Is this person living/deceased?<span class="required">*</span></label>
       </div>
 
       <div class="pu-height-weight">
-        <input class="pu-input-width" type="text" name="fathereducationalattainment" required value="<?= $studentProfile["FATHEREDUCATIONALATTAINMENT"]; ?>"/><br><br>
-        <div class="pu-radio-selection">
-          <input type="radio" name="fatherlivingstatus" value="Living" required <?php echo $studentProfile["FATHERLIVINGSTATUS"] == "Living" ? "checked" : ""; ?> /> Living
-      &nbsp; &nbsp;     <input type="radio" name="fatherlivingstatus" value="Deceased" required <?php echo $studentProfile["FATHERLIVINGSTATUS"] == "Deceased" ? "checked" : ""; ?> /> Deceased
+        <div  class="">
+          <select class="pu-select" name="fathereducationalattainment" required>
+              <option value="<?= $studentProfile["FATHEREDUCATIONALATTAINMENT"]; ?>" selected>
+                <?= $studentProfile["FATHEREDUCATIONALATTAINMENT"]; ?>
+              </option>
+                <option value="Elementary">None</option>  
+                <option value="Elementary">Elementary</option>  
+                <option value="High School Diploma">High School Diploma</option>  
+                <option value=" Bachelors Degree"> Bachelors Degree</option>  
+                <option value="Masters">Masters</option>
+                <option value="Doctors">Doctors</option>
+                <option value=" Doctor of Medicine"> Doctor of Medicine</option>
+                <option value="Juris Doctor">Juris Doctor</option>
+          </select>
         </div>
+          <div class="pu-radio-selection">
+            <input type="radio" name="fatherlivingstatus" value="Living" required <?php echo $studentProfile["FATHERLIVINGSTATUS"] == "Living" ? "checked" : ""; ?> /> Living
+        &nbsp; &nbsp;     <input type="radio" name="fatherlivingstatus" value="Deceased" required <?php echo $studentProfile["FATHERLIVINGSTATUS"] == "Deceased" ? "checked" : ""; ?> /> Deceased
+          </div>
       <br><br>
       </div>
+
+
+
 
       <label>Occupation<span class="required">*</span></label>
       <input type="text" name="occupation" required value="<?= $studentProfile["OCCUPATION"]; ?>"/><br><br>
