@@ -26,7 +26,7 @@ class Student_model extends CI_Model {
             'religious', 'civicawareness', 'othersinterests', 'consultedstatus',
             'reasonforconsultation', 'familymatters', 'careerconcerns', 'relationshipconcerns',
             'selfconcerns', 'concernswithteachers', 'financialmatters', 'academicconcerns',
-            'healthconcerns', 'otherguidanceconcern'
+            'healthconcerns', 'otherguidanceconcern', 'diagnosedspecify'
         ];
 
         $values = [];
