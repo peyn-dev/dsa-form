@@ -1,3 +1,4 @@
+<link rel="stylesheet" href="<?php echo base_url('assets/css/student_inventory_form.css'); ?>">
 <?php if (!empty($message)) : ?>
 <div class="alert alert-<?= $message_type; ?>" >
       <a href="#" class="close" data-dismiss="alert">
@@ -196,7 +197,11 @@ if ($Rpic && $Rpic->PICTURE) {
       <h4>Elementary</h4><br>
       
       <label>School Name<span class="required">*</span></label>
-      <input type="text" name="elementaryschoolname" required value="<?= $studentProfile["ELEMENTARYSCHOOLNAME"]; ?>"/><br><br>
+      <input type="text" name="elementaryschoolname" required>
+      <small style="color: #555; font-style: italic;">
+        Please spell out the full school name. Do not use acronyms.
+      </small>
+      <br><br>
 
       <label>School Address<span class="required">*</span></label>
       <input type="text" name="elementaryaddress" value="<?= $studentProfile["ELEMENTARYADDRESS"]; ?>"/><br><br>
@@ -225,7 +230,11 @@ if ($Rpic && $Rpic->PICTURE) {
       <h4>Junior High School</h4><br>
       
       <label>School Name<span class="required">*</span></label>
-      <input type="text" name="juniorhighschoolname" required value="<?= $studentProfile["JUNIORHIGHSCHOOLNAME"]; ?>"/><br><br>
+      <input type="text" name="juniorhighschoolname" required value="<?= $studentProfile["JUNIORHIGHSCHOOLNAME"]; ?>"/>
+      <small style="color: #555; font-style: italic;">
+        Please spell out the full school name. Do not use acronyms.
+      </small>
+      <br><br>
 
       <label>School Address<span class="required">*</span></label>
       <input type="text" name="juniorhighaddress" required value="<?= $studentProfile["JUNIORHIGHADDRESS"]; ?>"/><br><br>
@@ -253,7 +262,11 @@ if ($Rpic && $Rpic->PICTURE) {
       <h4>Senior Highschool</h4><br>
       
       <label>School Name<span class="required">*</span></label>
-      <input type="text" name="seniorhighschoolname" required value="<?= $studentProfile["SENIORHIGHSCHOOLTYPE"]; ?>"/><br><br>
+      <input type="text" name="seniorhighschoolname" required value="<?= $studentProfile["SENIORHIGHSCHOOLTYPE"]; ?>"/>
+      <small style="color: #555; font-style: italic;">
+        Please spell out the full school name. Do not use acronyms.
+      </small>
+      <br><br>
 
       <label>School Address<span class="required">*</span></label>
       <input type="text" name="seniorhighaddress" required value="<?= $studentProfile["SENIORHIGHADDRESS"]; ?>"/><br><br>
@@ -281,7 +294,11 @@ if ($Rpic && $Rpic->PICTURE) {
     <h4>Vocational</h4><br>
       
       <label>School Name</label>
-      <input type="text" name="vocationalcoursename" value="<?= $studentProfile["VOCATIONALCOURSENAME"]; ?>"/><br><br>
+      <input type="text" name="vocationalcoursename" value="<?= $studentProfile["VOCATIONALCOURSENAME"]; ?>"/>
+      <small style="color: #555; font-style: italic;">
+        Please spell out the full school name. Do not use acronyms.
+      </small>
+      <br><br>
 
       <label>School Address</label>
       <input type="text" name="vocationaladdress" value="<?= $studentProfile["VOCATIONALADDRESS"]; ?>"/><br><br>
@@ -309,7 +326,11 @@ if ($Rpic && $Rpic->PICTURE) {
       <h4>College</h4><br>
       
       <label>School Name</label>
-      <input type="text" name="collegeschoolname" value="<?= $studentProfile["COLLEGESCHOOLNAME"]; ?>"/><br><br>
+      <input type="text" name="collegeschoolname" value="<?= $studentProfile["COLLEGESCHOOLNAME"]; ?>"/>
+      <small style="color: #555; font-style: italic;">
+        Please spell out the full school name. Do not use acronyms.
+      </small>
+      <br><br>
 
       <label>School Address</label>
       <input type="text" name="collegeaddress" value="<?= $studentProfile["COLLEGEADDRESS"]; ?>"/><br><br>
@@ -358,7 +379,7 @@ if ($Rpic && $Rpic->PICTURE) {
       </div>
       <div class="pu-height-weight">
         <input type="text" name="fatherfullname" required value="<?= $studentProfile["FATHERFULLNAME"]; ?>"/>   
-        <input type="number" name="fatherage" required  value="<?= $studentProfile["FATHERAGE"]; ?>"/>
+        <input type="number" name="fatherage" oninput="this.value = this.value.replace(/[^0-9]/g, '');" required  value="<?= $studentProfile["FATHERAGE"]; ?>"/>
       </div>
 
       <div class="pu-label-name">
@@ -403,7 +424,7 @@ if ($Rpic && $Rpic->PICTURE) {
       </div>
       <div class="pu-height-weight">
         <input type="text" name="motherfullname" required value="<?= $studentProfile["MOTHERFULLNAME"]; ?>"/>   
-        <input type="number" name="motherage" required value="<?= $studentProfile["MOTHERAGE"]; ?>"/>
+        <input type="number" name="motherage" oninput="this.value = this.value.replace(/[^0-9]/g, '');" required value="<?= $studentProfile["MOTHERAGE"]; ?>"/>
       </div>
 
       <div class="pu-deceased-label">
@@ -428,7 +449,7 @@ if ($Rpic && $Rpic->PICTURE) {
       </div>
       <div class="pu-height-weight">
         <input type="text" name="guardianfullname" value="<?= $studentProfile["GUARDIANFULLNAME"]; ?>"/>   
-        <input type="number" name="guardianage" value="<?= $studentProfile["GUARDIANAGE"]; ?>"/>
+        <input type="number" name="guardianage" oninput="this.value = this.value.replace(/[^0-9]/g, '');" value="<?= $studentProfile["GUARDIANAGE"]; ?>"/>
       </div>
 
       <div class="pu-deceased-label">
@@ -574,7 +595,19 @@ if ($Rpic && $Rpic->PICTURE) {
       <div class="pu-test-row">
         <div>
           <label for="test1">Test type</label>
-          <input type="text" name="test1" value="<?= $studentProfile["TEST1"]; ?>"/>
+           <select name="test1" class="pu-select" required>
+              <option value="<?= $studentProfile["TEST1"]; ?>" selected>
+                  <?= $studentProfile["TEST1"]; ?>
+              </option>
+              <option value="Intelligence Tests">Intelligence Tests</option>
+              <option value="Achievement Tests">Achievement Tests</option>
+              <option value="Aptitude Tests">Aptitude Tests</option>
+              <option value="Personality Tests">Personality Tests</option>
+              <option value="Neuropsychological Tests">Neuropsychological Tests</option>
+              <option value="Behavioral Assessments">Behavioral Assessments</option>
+              <option value="Diagnostic Tests for Mental Disorders">Diagnostic Tests for Mental Disorders</option>
+              <option value="Interest and Career Tests">Interest and Career Tests</option>
+           </select>
         </div>
         <div>
           <label for="date1">Date</label>
@@ -593,7 +626,19 @@ if ($Rpic && $Rpic->PICTURE) {
        <div class="pu-test-row">
         <div>
           <label for="test2">Test type</label>
-          <input type="text" name="test2" value="<?= $studentProfile["TEST2"]; ?>"/>
+          <select name="test2" class="pu-select" required>
+              <option value="<?= $studentProfile["TEST2"]; ?>" selected>
+                  <?= $studentProfile["TEST2"]; ?>
+              </option>
+              <option value="Intelligence Tests">Intelligence Tests</option>
+              <option value="Achievement Tests">Achievement Tests</option>
+              <option value="Aptitude Tests">Aptitude Tests</option>
+              <option value="Personality Tests">Personality Tests</option>
+              <option value="Neuropsychological Tests">Neuropsychological Tests</option>
+              <option value="Behavioral Assessments">Behavioral Assessments</option>
+              <option value="Diagnostic Tests for Mental Disorders">Diagnostic Tests for Mental Disorders</option>
+              <option value="Interest and Career Tests">Interest and Career Tests</option>
+           </select>
         </div>
         <div>
           <label for="date2">Date</label>
@@ -612,7 +657,19 @@ if ($Rpic && $Rpic->PICTURE) {
        <div class="pu-test-row">
         <div>
           <label for="test3">Test type</label>
-          <input type="text" name="test3" value="<?= $studentProfile["TEST3"]; ?>"/>
+          <select name="test3" class="pu-select" required>
+              <option value="<?= $studentProfile["TEST3"]; ?>" selected>
+                  <?= $studentProfile["TEST3"]; ?>
+              </option>
+              <option value="Intelligence Tests">Intelligence Tests</option>
+              <option value="Achievement Tests">Achievement Tests</option>
+              <option value="Aptitude Tests">Aptitude Tests</option>
+              <option value="Personality Tests">Personality Tests</option>
+              <option value="Neuropsychological Tests">Neuropsychological Tests</option>
+              <option value="Behavioral Assessments">Behavioral Assessments</option>
+              <option value="Diagnostic Tests for Mental Disorders">Diagnostic Tests for Mental Disorders</option>
+              <option value="Interest and Career Tests">Interest and Career Tests</option>
+           </select>
         </div>
         <div>
           <label for="date3">Date</label>
@@ -734,7 +791,7 @@ if ($Rpic && $Rpic->PICTURE) {
 
           <span style="font-weight:bold; padding-bottom:14px; display:inline-block;">Parental/Guardian Consent (for students under 18)</span>
           <div>
-            <input type="checkbox" name="parentalConsent" value="1" required>  
+            <input type="checkbox" name="parentalConsent" value="1">  
             <span style="font-style:italic">I am the parent/legal guardian and I give my full consent for my child’s participation in counseling services and data processing in compliance with the Data Privacy Act of 2012.</span><br><br>
           </div>
 
@@ -748,8 +805,8 @@ if ($Rpic && $Rpic->PICTURE) {
         
         <div class="pu-form-actions">
             <div class="pu-left-buttons">
-                <button type="submit" class="pu-btn btn-submit">Submit Form</button>
-                <button class="pu-btn btn-cancel">Cancel</button>
+                <button type="submit" class="pu-btn-submit">Submit Form</button>
+                <button class="pu-btn-cancel">Cancel</button>
             </div>
             <div class="pu-right-buttons">
                 <button class="pu-btn-icon">Clear Form</button>

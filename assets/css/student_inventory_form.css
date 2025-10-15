@@ -81,10 +81,10 @@
       font-family: inherit;
     }
 
-.pu-button {
+button {
       width: 100%;
       padding: 14px;
-      background-color: #2193b0;
+      background-color: rgb(176, 64, 33);
       border: none;
       border-radius: 12px;
       color: white;
@@ -94,11 +94,11 @@
       transition: background-color 0.3s ease;
     }
 
-.pu-form button:hover {
+button:hover {
       background-color:rgb(203, 221, 226);
     }
 
-.pu-p {
+p {
       font-weight: 400;
       color: #5D5D5D;
       font-family: 'inter', sans-serif;
@@ -106,7 +106,7 @@
       font-size: 14px;
     }
 
-.pu-form p[style*="color: green"] {
+p[style*="color: green"] {
       color: #27ae60;
     }
 
@@ -196,6 +196,7 @@
 .pu-form .pu-radio-selection {
       margin-left: 20px;
       margin-top: 10px;
+      gap: 50px; 
     }
 
 .pu-form input[type="radio"] {
@@ -375,8 +376,9 @@
 .pu-btn-icon i {
        font-size: 16px;
      }
+     
 
- .pu-form   button:disabled,
+ button:disabled,
 .pu-btn-submit:disabled {
         background-color: #cccccc !important;
         color: #888888 !important;
@@ -384,24 +386,6 @@
         pointer-events: none;
         opacity: 0.7;
       }
-
-
-
-
-
-      .pu-sign-button  {
-      width: 100%;
-      padding: 7px;
-      background-color:rgb(176, 64, 33);
-      border: none;
-      border-radius: 12px;
-      color: white;
-      font-size: 1.0rem;
-      font-weight: 600;
-      cursor: pointer;
-      transition: background-color 0.3s ease;
-    }
-
 
     .privacy-notice p {
       text-align: justify;
@@ -414,6 +398,10 @@
       gap: 15px;
       margin-bottom: 15px;
       align-items: center;
+    }
+
+    .pu-test-row select {
+      max-width: 350px;
     }
 
     .pu-signature-container {
@@ -454,3 +442,4 @@
       color: red;
       font-size: 20px;
 }
+
