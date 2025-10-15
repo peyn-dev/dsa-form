@@ -197,7 +197,7 @@ if ($Rpic && $Rpic->PICTURE) {
       <h4>Elementary</h4><br>
       
       <label>School Name<span class="required">*</span></label>
-      <input type="text" name="elementaryschoolname" required>
+      <input type="text" name="elementaryschoolname" required value="<?= $studentProfile["ELEMENTARYSCHOOLNAME"]; ?>">
       <small style="color: #555; font-style: italic;">
         Please spell out the full school name. Do not use acronyms.
       </small>
@@ -433,7 +433,21 @@ if ($Rpic && $Rpic->PICTURE) {
       </div>
 
       <div class="pu-height-weight">
-        <input class="pu-input-width" type="text" name="mothereducationalattainment" required/><br><br>
+        <div  class="">
+          <select class="pu-select" name="mothereducationalattainment" required>
+              <option value="<?= $studentProfile["MOTHEREDUCATIONALATTAINMENT"]; ?>" selected>
+                <?= $studentProfile["MOTHEREDUCATIONALATTAINMENT"]; ?>
+              </option>
+                <option value="Elementary">None</option>  
+                <option value="Elementary">Elementary</option>  
+                <option value="High School Diploma">High School Diploma</option>  
+                <option value=" Bachelors Degree"> Bachelors Degree</option>  
+                <option value="Masters">Masters</option>
+                <option value="Doctors">Doctors</option>
+                <option value=" Doctor of Medicine"> Doctor of Medicine</option>
+                <option value="Juris Doctor">Juris Doctor</option>
+          </select>
+        </div>
         <div class="pu-radio-selection">
           <input type="radio" name="motherlivingstatus" value="Living" required <?php echo $studentProfile["MOTHERLIVINGSTATUS"] == "Living" ? "checked" : ""; ?> /> Living
        &nbsp; &nbsp;    <input type="radio" name="motherlivingstatus" value="Deceased" required <?php echo $studentProfile["MOTHERLIVINGSTATUS"] == "Deceased" ? "checked" : ""; ?> /> Deceased
